@@ -1,5 +1,5 @@
 main{
-  background: green;
+  background: #333;
   height: 900px;
   width: 1700px;
   border: solid 10px black;
@@ -13,6 +13,36 @@ aside {
   height: 95%;
   margin: auto auto;
 }
+
+/* ----------------------------------------- */
+/*  The left stide of the board starts here */
+/* --------------------------------------- */
+
+.name {
+  width: 100%;
+  height: 30%;
+  margin: 0 0 20px 0;
+  background: black;
+  border: solid 5px white;
+  top: 0px;
+}
+
+h1{
+  color: green;
+  text-align: center;
+  font-size: 34px;
+}
+
+.rules{
+  width: 100%;
+  height: 66%;
+  background: black;
+  border: solid 5px white;
+}
+
+/* ------------------------------------------ */
+/*  The center part of the board starts here */
+/* ---------------------------------------- */
 
 .game-space{
   border: solid 5px white;
@@ -44,26 +74,21 @@ aside {
   background: red;
 }
 
-.name {
-  width: 100%;
-  height: 30%;
-  margin: 0 0 20px 0;
-  background: black;
-  border: solid 5px white;
-  top: 0px;
-}
-
-h1{
-  color: green;
+.msg{
+  color: white;
+  width: 600px;
+  height: 300px;
+  font-size: 80px;
+  margin: 100px auto;
   text-align: center;
-  font-size: 34px;
 }
 
-.rules{
-  width: 100%;
-  height: 66%;
-  background: black;
-  border: solid 5px white;
+/* ------------------------------------------ */
+/*  The right stide of the board starts here */
+/* ---------------------------------------- */
+
+.info {
+  position: relative;
 }
 
 .stats{
@@ -76,6 +101,9 @@ h1{
   clear: right;
 }
 
-.info {
-  position: relative;
+#countdown {
+  color: white;
+  font-size: 80px;
+  margin: 50px auto;
+  text-align: center;
 }
