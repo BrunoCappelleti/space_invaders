@@ -14,10 +14,8 @@ const enemies = document.querySelector('.enemies');
 const activatePlayer = (el) => {
   let key = el.keyCode;
   if (key === 32){
-    console.log('firing');
     fire();
   } else if (key === 37 || key === 39){
-    console.log('moving')
     movePlayer(key);
   }
     else {
@@ -33,6 +31,19 @@ const movePlayer = (key) => {
   }
 }
 
+const checkForCollison = (laser) => {
+  const bool = null;
+  const invaders = document.querySelectorAll('.invader');
+  invaders.forEach( (inv) => {
+    if (laser.offsetTop < inv.offsetTop + inv.offsetHeight &&
+      laser.offsetLeft < inv.offsetLeft + inv.offsetWidth &&
+      laser.offsetLeft + laser.offsetWidth > inv.offsetLeft){
+        inv.remove();
+        laser.remove();
+      };
+    });
+  };
+
 const fire = () => {
   const laser = document.createElement('div');
   laser.className = 'laser';
@@ -41,30 +52,21 @@ const fire = () => {
   setInterval(moveLaser, 20, laser);
 };
 
-const checkForCollison = (laser) => {
-  if (laser.offsetTop < (enemies.offsetTop + 20)){
-    enemies.style.background = 'green';
-    return true;
-  };
-  return false;
-};
-
 const moveLaser = (laser) => {
   let currentY = laser.offsetTop;
-  if (checkForCollison(laser)){
-    laser.remove();
-  }
-  (currentY > 0 ? laser.style.top = `${(parseInt(laser.offsetTop) - 5)}px` : laser.remove());
+  checkForCollison(laser);
+  currentY > 0 ? laser.style.top = `${laser.offsetTop - 5}px` : laser.remove();
 }
 
 const summonInvaders = () => {
   for (let i = 0; i < 2; i += 1) {
     for (let j = 0; j < 12; j += 1) {
+      console.log('making invader');
       const invader = document.createElement('div');
       invader.className = 'invader';
       enemies.append(invader);
-      invader.style.left = `${invader.offsetWidth + (70 * j)}px`;
-      invader.style.top = `${invader.offsetHeight + (70 * i)}px`;
+      invader.style.left = `${50 + (70 * j)}px`;
+      invader.style.top = `${50 + (70 * i)}px`;
     };
   };
 };
