@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Space Invaders</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|VT323" rel="stylesheet">
     <script defer type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
 
@@ -11,25 +12,29 @@
     <main>
       <aside class="name-rules">
         <div class="name">
-          <h1>SPACE<br>INVADERS</h1>
+          <p class="name-copy">SPACE<br>INVADERS</p>
+          <p class="name-subtitle">A clone of an arcade classic</p>
         </div>
         <div class="rules">
+          <p class="rules-copy"> Greetings, Captain.<br><br>It has come to our attention that an intergalactic threat looms at the edge of our planet. It is up to you to stop it. To win, destroy all incoming invaders within the time limit. If time runs out, Earth, and its inhabitants, will be lost. The fate of humanity rests in your hands.<br><br>Good luck and Godspeed.<br><br><br>Controls:<br>-Move using L/R arrow keys<br>-Fire your laser with spacebar</p>
         </div>
       </aside>
 
       <aside class="game-space">
+        <p class="msg">Welcome to<br>SPACE INVADERS</p>
         <div class="enemies"></div>
-        <div class="player"></div>
       </aside>
 
       <aside class="info">
-        <div class="stats" id ="score">
+        <div class="stats">
+          <p class="value" id="score">SCORE<br>000000</p>
         </div>
-        <div class="stats" id="time">
-          <h2 id='countdown'>00 : 00</h2>
+        <div class="stats">
+          <p class="value" id="countdown">TIME<br>00:00</p>
         </div>
-        <div class="stats" id="lives">
+        <div class="stats">
         </div>
+          <p class="lives"></p>
       </aside>
 
     </main>
