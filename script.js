@@ -36,7 +36,7 @@ const fire = () => {
   const laser = document.createElement('div');
   laser.className = 'laser';
   document.querySelector('.game-space').append(laser);
-  laser.style.left = `${getPlayer().offsetLeft + getPlayer().offsetWidth / 2}px`;
+  laser.style.left = `${getPlayer().offsetLeft + getPlayer().offsetWidth / 2 - 8}px`;
   let move = setInterval(moveLaser, 20, laser);
 };
 
@@ -53,9 +53,10 @@ const checkForCollision = (laser) => {
     if (laser.offsetTop < el.offsetTop + el.offsetHeight &&
     laser.offsetLeft < el.offsetLeft + el.offsetWidth &&
     laser.offsetLeft + laser.offsetWidth > el.offsetLeft){
-      el.remove();
       laser.remove();
+      el.classList.add('shot');
       updateScore('collision');
+      setTimeout( () => el.remove(), 250);
     };
   });
 };
@@ -92,6 +93,7 @@ const summonInvaders = () => {
       document.querySelector('.enemies').append(invader);
       invader.style.left = `${11.5+ (8 * j)}%`;
       invader.style.top = `${3.5 + (8 * i)}%`;
+      setInterval( () => invader.classList.toggle('flap'), 500);
     };
   };
 };
@@ -100,7 +102,7 @@ const summonInvaders = () => {
 const moveInvaders = () => {
   let step = document.querySelector('.game-space').offsetHeight / 100
   document.querySelectorAll('.invader').forEach( (inv) => {
-    inv.style.top = `${inv.offsetTop + (3 * step)}px`
+    inv.style.top = `${inv.offsetTop + (6 * step)}px`
   });
 };
 
@@ -108,7 +110,7 @@ const moveInvaders = () => {
 const counter = () => {
   let time = 90;
   let timer = setInterval( () => {
-    time % 5 === 0 ? moveInvaders(): null;
+    time % 10 === 0 ? moveInvaders(): null;
     let minutes = Math.floor(time / 60);
     let seconds = (Math.floor(time % 60) < 10) ? `0${Math.floor(time % 60)}` : Math.floor(time % 60);
     document.querySelector('#countdown').innerHTML = `TIME<br>0${minutes}:${seconds}`
